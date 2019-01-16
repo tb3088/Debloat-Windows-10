@@ -60,7 +60,7 @@ function Takeown-Folder($path) {
 
 function Elevate-Privileges {
     param($Privilege)
-    $Definition = @"
+    $Definition = @'
     using System;
     using System.Runtime.InteropServices;
 
@@ -99,7 +99,7 @@ function Elevate-Privileges {
             return retVal;
         }
     }
-"@
+'@
     $ProcessHandle = (Get-Process -id $pid).Handle
     $type = Add-Type $definition -PassThru
     $type[0]::EnablePrivilege($processHandle, $Privilege)
